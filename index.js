@@ -1,10 +1,11 @@
-const express = require('express')
-const app = express()
+const express = require('express');
+const app = express();
+const http = require('http');
 
 const { writeFileSync } = require('fs')
 const ics = require('ics')
 
-app.get('/', function (req, res) {
+app.get('/', (req, res) => {
   ics.createEvent({
     title: 'Dinner',
     description: 'Nightly thing I do',
@@ -20,6 +21,7 @@ app.get('/', function (req, res) {
     const file = `${__dirname}/event.ics`;
     res.download(file);
   })
-})
+});
 
-app.listen(3000)
+const server = http.createServer(app);
+server.listen(3000);
