@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
       console.log(error)
     }
 
-    writeFileSync(`${__dirname}/event.ics`, value)
+    // writeFileSync(`${__dirname}/event.ics`, value)
     const file = `${__dirname}/event.ics`;
     res.download(file);
   })
