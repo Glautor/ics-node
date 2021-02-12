@@ -1,9 +1,11 @@
 const express = require('express');
-const app = express();
 const http = require('http');
-
+const cors = require('cors')
+const app = express();
 const { writeFileSync } = require('fs')
 const ics = require('ics')
+
+app.use(cors())
 
 app.get('/', (req, res) => {
   ics.createEvent({
